@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI学習プラン生成</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>AI学習プラン生成アプリ</h1>
+    <form method="post">
+        <label for="subject">学びたい内容を入力：</label>
+        <input type="text" id="subject" name="subject" required>
+        <button type="submit">生成</button>
+    </form>
+
+    {% if subject %}
+        <div class="plan">
+            <h2>「{{ subject }}」の学習プラン</h2>
+            <p>{{ plan }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
