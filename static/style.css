@@ -9,6 +9,7 @@ h1 {
     color: #333;
 }
 
+/* 入力フォームを中央揃え */
 form {
     margin: 20px auto;
     padding: 20px;
@@ -16,20 +17,20 @@ form {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 400px;
+    text-align: center;
 }
 
-label {
-    font-size: 18px;
-}
-
+/* 入力欄のサイズと位置調整 */
 input {
-    width: 100%;
+    width: 90%; /* フォームの幅を広げる */
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
 }
 
+/* 送信ボタンのデザイン */
 button {
     background-color: #007bff;
     color: white;
@@ -43,6 +44,7 @@ button:hover {
     background-color: #0056b3;
 }
 
+/* AIの学習プランを見やすく */
 .plan {
     margin-top: 20px;
     padding: 15px;
@@ -52,4 +54,6 @@ button:hover {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    text-align: left; /* 左揃えで見やすく */
+    line-height: 1.8; /* 行間を広げる */
 }

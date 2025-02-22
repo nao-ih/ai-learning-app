@@ -1,14 +1,15 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, render_template
 import openai
 import os
+import re
 
 app = Flask(__name__)
 
-# APIキーを環境変数から取得
+# OpenAI APIキーを環境変数から取得
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def generate_learning_plan(subject):
-    """指定された学習内容に基づいて、AIが学習プランを作成する"""
+    """AIが学習プランを作成し、HTMLフォーマットで整形"""
     client = openai.OpenAI()
     response = client.chat.completions.create(
         model="gpt-4o",
@@ -17,7 +18,14 @@ def generate_learning_plan(subject):
             {"role": "user", "content": f"{subject}を学ぶための最適な学習プランを作成してください。"}
         ]
     )
-    return response.choices[0].message.content
+
+    plan = response.choices[0].message.content
+
+    # **改行とリスト化の処理**
+    plan = re.sub(r'(\d+)\.\s', r'<br><strong>\1.</strong> ', plan)  # 番号リストを太字に
+    plan = plan.replace("\n", "<br>")  # 改行をHTML用に変換
+
+    return plan
 
 @app.route("/", methods=["GET", "POST"])
 def index():

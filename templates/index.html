@@ -17,7 +17,7 @@
     {% if subject %}
         <div class="plan">
             <h2>「{{ subject }}」の学習プラン</h2>
-            <p>{{ plan }}</p>
+            <p>{{ plan | safe }}</p>
         </div>
     {% endif %}
 </body>
